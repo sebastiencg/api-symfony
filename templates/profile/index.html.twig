@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Product index</h1>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>blague</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for blague in blagues %}
+                <tr>
+                    <td>{{ blague.blague }}</td>
+                    <td>
+                        <a class="btn btn-danger" href="{{ path('app_blague_delete', {'id': blague.id}) }}">delete</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <a class="btn btn-primary"  href="{{ path('app_blague_index') }}">add blague</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blague index{% endblock %}
+
+{% block body %}
+    <h1>Blague index</h1>
+
+        {% for blague in blagues %}
+            <form action="{{ path('app_blague_new') }}" method="post">
+                <textarea class="col-11"   name="blague" >{{ blague }}</textarea>
+                <button type="submit" class="btn btn-warning">Add</button>
+            </form>
+
+        {% endfor %}
+{% endblock %}
