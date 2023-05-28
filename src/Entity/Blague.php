@@ -17,8 +17,7 @@ class Blague
     #[ORM\Column(type: Types::TEXT)]
     private ?string $blague = null;
 
-    #[ORM\ManyToOne(inversedBy: 'blagues')]
-    private ?Profile $profile = null;
+
 
 
 
@@ -39,18 +38,4 @@ class Blague
         return $this;
     }
 
-    public function getProfile(): ?Profile
-    {
-        return $this->profile;
-    }
-
-    public function setProfile(?Profile $profile): self
-    {
-        $this->profile = $profile;
-
-        return $this;
-    }
-
-
-    
 }

@@ -22,9 +22,6 @@ class Profile
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $username = null;
 
-    #[ORM\OneToMany(mappedBy: 'profile', targetEntity: Blague::class)]
-    private Collection $blagues;
-
     public function __construct()
     {
         $this->blagues = new ArrayCollection();
@@ -61,35 +58,6 @@ class Profile
         return $this;
     }
 
-    /**
-     * @return Collection<int, Blague>
-     */
-    public function getBlagues(): Collection
-    {
-        return $this->blagues;
-    }
-
-    public function addBlague(Blague $blague): self
-    {
-        if (!$this->blagues->contains($blague)) {
-            $this->blagues->add($blague);
-            $blague->setProfile($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBlague(Blague $blague): self
-    {
-        if ($this->blagues->removeElement($blague)) {
-            // set the owning side to null (unless already changed)
-            if ($blague->getProfile() === $this) {
-                $blague->setProfile(null);
-            }
-        }
-
-        return $this;
-    }
 
 
 }
